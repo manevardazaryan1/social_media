@@ -1,4 +1,4 @@
 from django.http import HttpResponse
 
-def home(request):
-    return HttpResponse("Welcome to my Django app!")
+def index(request):
+    return HttpResponse("Hello, world. You're at the home index.")
