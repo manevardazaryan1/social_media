@@ -1,12 +1,18 @@
 {
-  "version": 2,
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ],
   "builds": [
     {
-      "src": "dist",
-      "use": "vercel"
-    },
-    {
-      "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+      "src": "frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "frontend/dist"
+      }
     }
-  ]
+  ],
+  "outputDirectory": "frontend/dist"
 }
