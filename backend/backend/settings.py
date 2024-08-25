@@ -54,7 +54,7 @@ MEDIA_ROOT = "media"
 MEDIA_URL = "/media/"
 
 
-ROOT_URLCONF = "backend.urls"
+ROOT_URLCONF = "backend.backend.urls"
 
 TEMPLATES_DIR = BASE_DIR / "templates"
 
@@ -74,7 +74,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "backend.wsgi.application"
+WSGI_APPLICATION = "backend.backend.wsgi.application"
 
 
 # Database
