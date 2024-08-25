@@ -2,7 +2,8 @@
   "version": 2,
   "builds": [
     {
-      "src": "dist"
+      "src": "dist",
+      "use": "vercel"
     }
   ]
 }
