@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "corsheaders",
+    "home",
 ]
 
 MIDDLEWARE = [
@@ -57,11 +58,18 @@ MIDDLEWARE = [
 ]
 
 STATIC_URL = "/static/"
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
-STATIC_ROOT = os.path.join(BASE_DIR, "collected_static")
 
+# Directory where static files will be collected for production
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+
+# Additional directories to look for static files during development
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+
+# Static files storage (for production, if needed)
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+MEDIA_ROOT = "media"
 MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 ROOT_URLCONF = "backend.urls"
 
