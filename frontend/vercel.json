@@ -3,7 +3,6 @@
   "builds": [
     {
       "src": "dist",
-      "dest": ".",
       "framework": "vercel"
     }
   ]
