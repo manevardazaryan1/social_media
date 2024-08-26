@@ -9,3 +9,4 @@ django-environ==0.10.0
 Pillow==9.4.0
 python-dotenv>=0.19.2
 django-environ==0.10.0
+django-filter==23.2
