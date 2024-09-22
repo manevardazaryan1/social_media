@@ -1,33 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect } from "react"
+// import socialMediaBackendiaUrl from "./constants/urls"
+import "./App.css"
+import Header from "./components/header/Header"
+import getToken from "./service/getToken"
+import { socialMediaMainUrl } from "./constants/urls"
+import { useSelector, useDispatch } from 'react-redux'
+import { setCurrentUserId } from "./features/slices/profileSlice"
+import fetchPosts from "./service/fetchPosts"
+import fetchUsers from "./service/fetchUsers"
+import fetchCurrentUser from "./service/fetchCurrentUser"
 
 function App() {
-  const [count, setCount] = useState(0)
+  const userId = useSelector((state) => state.profile.id)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    async function fetchToken() {
+      try {
+        const data = await getToken()
+
+        if ( data.token && data.user) {
+          dispatch(setCurrentUserId({id: data.user}))
+          dispatch(fetchUsers())
+          dispatch(fetchCurrentUser(data.user))
+          dispatch(fetchPosts())
+        }
+  
+        if (!data.token && data.token ) {
+          window.location.href = socialMediaMainUrl
+        }
+      } catch(err) {
+        console.log(err)
+      }
+    }
+
+    fetchToken()
+  }, [dispatch]);
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    {
+      userId && <main className="">
+        <Header />
+      </main>
+    }
     </>
   )
 }

@@ -8,6 +8,7 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to=upload_image, blank=True, null=True)
     likes = models.ManyToManyField(User, related_name="liked_posts",blank=True)
+    saved_by = models.ManyToManyField(User, related_name="saved_posts",blank=True)
 
     def __str__(self):
         """Post class str function"""

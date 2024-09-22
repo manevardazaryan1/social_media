@@ -1,0 +1,13 @@
+.posts {
+    columns: 3;
+}
+
+.post {
+    width: 100%;
+    margin: 20px;
+}
+
+.post-img {
+    width: 100%;
+    height: auto;
+}

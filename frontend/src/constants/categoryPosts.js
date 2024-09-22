@@ -1,0 +1,1 @@
+export const categoryPosts = ["sport", "films", "architecture", "animals", "art", "quotes", "great", "design", "fashion", "nature", "books", "music"]
